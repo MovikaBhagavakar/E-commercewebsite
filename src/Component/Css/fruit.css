@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.flex{
+   
+    margin-left: 2px;
+}
+.card{
+   
+    margin-left:10px;
+}
+.spin{
+    margin-top:45px;
+}
