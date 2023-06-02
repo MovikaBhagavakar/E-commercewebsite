@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Css/fruit.css'
+import { wrapper } from '../App';
 
 function Fruits() {
+  const{search}=useContext(wrapper);
   
   
   const [cocktails, setCocktails] = useState([]);
   
   const [loading, setLoading] = useState(true);
-  const [searchValue, setSearchValue] = useState("");
+  // const [searchValue, setSearchValue] = useState("");
   // const [error , setError] = useState(null);
   // const [pending , setPending] = useState(true)
 
 
   useEffect(() => {
 
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`)
       // .then((res) =>{ if(!res.ok){
       //   throw Error("Could not fethch the data")
       // }res.json()}) 
@@ -29,7 +31,7 @@ function Fruits() {
 
 
 
-  }, [searchValue]);
+  }, [search]);
   // console.log(searchValue)
 
   if (loading) {
@@ -107,13 +109,13 @@ function Fruits() {
     <div className="card">
 
       <h1>Welcome to food world</h1>
-      <input
+      {/* <input
         value={searchValue}
 
         placeholder="Search your drinks..."
         className="form-control"
         onChange={(e) => setSearchValue(e.target.value)}
-      />
+      /> */}
       {cocktails &&
         <div className="row">
 

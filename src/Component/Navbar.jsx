@@ -1,10 +1,23 @@
 import React, { useContext, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom';
-// import { wrapper } from '../App' 
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { wrapper } from '../App' 
 
 function Navbar() {
   // const [search , setSearch]=useState("")
-  // const {setSearch, search} = useContext(wrapper);
+  const {setSearch, search,setLogout,setLogin} = useContext(wrapper);
+  const data=useLocation();
+  const navigate= useNavigate();
+
+  if(data.pathname==='/login'){
+    return false;
+  }
+  function logout(){
+    setLogout(true)
+    setLogin(false);
+    navigate("/")
+
+
+  }
 
   return (
     <div>
@@ -32,13 +45,16 @@ function Navbar() {
          
         </ul>
         <div>
-        {/* <input
+        <input
         value={search}
 
         placeholder="Search your drinks..."
         className="form-control"
         onChange={(e) => setSearch(e.target.value)}
-      /> */}
+      />
+        </div>
+        <div>
+          <button onClick={logout}>Logout</button>
         </div>
       </div>
     </div>
